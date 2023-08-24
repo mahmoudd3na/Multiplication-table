@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>HTML Table Example</title>
+    <style>
+        table td {
+            font-size: 25px;
+            font-weight: 600;
+            padding: 15px;
+            border: solid 1px black;
+        }
+
+        table {
+            margin: auto;
+            background-color:rgb(192, 170, 170);
+        }
+        
+        th {
+            font-size: 25px;
+            font-weight: 600;
+            padding: 15px;
+            background-color:rgb(115, 99, 99);
+            color: aliceblue;
+        }
+        .same{
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table id="multi-table">
+    </table>
+    <script>
+        let table = document.getElementById("multi-table");
+        let output = "";
+        output += `<tr>`;
+        output += `<th>X</th>`
+
+        for (let i = 0; i <= 10; i++) {
+            if (i === 0) {
+                for (let j = 1; j <= 10; j++)
+                    output += `<th>${j}</th>`;
+            }
+            if (i !== 0)
+                output += `<tr><th>${i}</th></tr>`;
+        }
+        table.innerHTML = output; 
+        let rows = document.querySelectorAll("tr");
+        for (let i = 1; i <= 10; i++){
+            let row= rows[i];
+            console.log(rows[i]); 
+            for (let j = 1; j <= 10; j++){
+                let td =document.createElement("td"); 
+                td.innerHTML=`<td>${i*j}</td>`;
+                if(i===j) td.classList.add("same"); 
+                row.appendChild(td); 
+            }
+        }
+    </script>
+</body>
+
+</html>
